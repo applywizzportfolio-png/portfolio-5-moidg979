@@ -55,7 +55,7 @@ const TextWindow = () => {
           scale={[1, -1, 1]}
           fontSize={0.8}
           rotation={[0, -Math.PI / 2,  -Math.PI / 2]}>
-          {data?.skills?.[0]?.name?.toUpperCase() || "DESIGNER"}. {data?.skills?.[1]?.name?.toUpperCase() || "DEVELOPER"}
+          {(typeof data?.skills?.[0] === 'string' ? data?.skills?.[0] : data?.skills?.[0]?.name)?.toUpperCase() || "DESIGNER"}. {(typeof data?.skills?.[1] === 'string' ? data?.skills?.[1] : data?.skills?.[1]?.name)?.toUpperCase() || "DEVELOPER"}
         </Text>
 
         <Text color="white" anchorX="left" anchorY="middle"
@@ -64,7 +64,7 @@ const TextWindow = () => {
           fontSize={0.8}
           position={[0, 0, -0.6]}
           rotation={[0, -Math.PI / 2,  -Math.PI / 2]}>
-          {data?.skills?.[2]?.name?.toUpperCase() || "CREATIVE"}. {data?.skills?.[3]?.name?.toUpperCase() || "OPTIMIST"}
+          {(typeof data?.skills?.[2] === 'string' ? data?.skills?.[2] : data?.skills?.[2]?.name)?.toUpperCase() || "CREATIVE"}. {(typeof data?.skills?.[3] === 'string' ? data?.skills?.[3] : data?.skills?.[3]?.name)?.toUpperCase() || "OPTIMIST"}
         </Text>
       </group>
 
@@ -74,7 +74,7 @@ const TextWindow = () => {
           scale={[-1, -1, 1]}
           fontSize={0.8}
           rotation={[0, -Math.PI / 2,  -Math.PI / 2]}>
-          {data?.skills?.[4]?.name?.toUpperCase() || "GAMER"}. {data?.skills?.[5]?.name?.toUpperCase() || "CREATIVE"}
+          {(typeof data?.skills?.[4] === 'string' ? data?.skills?.[4] : data?.skills?.[4]?.name)?.toUpperCase() || "GAMER"}. {(typeof data?.skills?.[5] === 'string' ? data?.skills?.[5] : data?.skills?.[5]?.name)?.toUpperCase() || "CREATIVE"}
         </Text>
         <Text color="white" anchorX="right" anchorY="middle"
           {...fontProps}
@@ -82,7 +82,7 @@ const TextWindow = () => {
           fontSize={0.8}
           position={[0, 0, -0.6]}
           rotation={[0, -Math.PI / 2,  -Math.PI / 2]}>
-          {data?.skills?.[6]?.name?.toUpperCase() || "OPTIMIST"}. {data?.skills?.[7]?.name?.toUpperCase() || "DESIGNER"}
+          {(typeof data?.skills?.[6] === 'string' ? data?.skills?.[6] : data?.skills?.[6]?.name)?.toUpperCase() || "OPTIMIST"}. {(typeof data?.skills?.[7] === 'string' ? data?.skills?.[7] : data?.skills?.[7]?.name)?.toUpperCase() || "DESIGNER"}
         </Text>
       </group>
     </group>

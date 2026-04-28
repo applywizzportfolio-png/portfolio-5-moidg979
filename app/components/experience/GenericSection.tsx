@@ -1,5 +1,5 @@
 "use client";
-import { ScrollControls } from "@react-three/drei";
+import { ScrollControls, Html } from "@react-three/drei";
 import { usePortalStore, useScrollStore } from "@stores";
 import { useEffect, useMemo, useRef } from "react";
 import { usePortfolioData } from "../../../hooks/usePortfolioData";
@@ -64,7 +64,8 @@ const GenericSection = ({ section }: { section: any }) => {
   }, [section]);
 
   return (
-    <group className={`timeline-container-${section.id}`}>
+    <group>
+      <Html><div className={`timeline-container-${section.id}`} /></Html>
       <mesh receiveShadow>
         <planeGeometry args={[4, 4, 1]} />
         <shadowMaterial opacity={0.1} />

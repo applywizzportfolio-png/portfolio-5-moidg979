@@ -1,4 +1,4 @@
-import { ScrollControls } from "@react-three/drei";
+import { ScrollControls, Html } from "@react-three/drei";
 import { usePortalStore, useScrollStore } from "@stores";
 import { useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
@@ -92,7 +92,8 @@ const Work = () => {
   }, [isActive]);
 
   return (
-    <group className="timeline-container">
+    <group>
+      <Html><div className="timeline-container" /></Html>
       <mesh receiveShadow>
         <planeGeometry args={[4, 4, 1]} />
         <shadowMaterial opacity={0.1} />
