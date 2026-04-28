@@ -1,7 +1,7 @@
 import { useScroll } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import gsap from "gsap";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { isMobile } from "react-device-detect";
 import * as THREE from "three";
 import { usePortalStore } from "@stores";
@@ -14,15 +14,20 @@ const Projects = () => {
   const isActive = usePortalStore((state) => state.activePortalId === "projects");
   const data = useScroll();
 
+  const wasActive = useRef(false);
+
   useEffect(() => {
-    // Hide scrollbar when active.
-    data.el.style.overflow = isActive ? 'hidden' : 'auto';
     if (isActive) {
+      wasActive.current = true;
+      data.el.style.overflow = 'hidden';
       if (isMobile) {
         gsap.to(camera.position, { z: 11.5, y: -39, x: 1, duration: 1 });
       } else {
         gsap.to(camera.position, { y: -39, x: 2, duration: 1 });
       }
+    } else if (wasActive.current) {
+      wasActive.current = false;
+      data.el.style.overflow = 'auto';
     }
   }, [isActive]);
 

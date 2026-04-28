@@ -2,19 +2,19 @@
   "personal": {
     "name": "Nithin Erroju",
     "email": "nithinerroju21120@gmail.com",
-    "phone": "+91 6304338275",
-    "location": "Siddipet",
+    "phone": "",
+    "location": "",
     "linkedin": "https://www.linkedin.com/in/nithin-erroju-849879255/",
     "github": "https://github.com/Tech-Nithin",
     "portfolio": ""
   },
   "socialLinks": {
+    "linkedin": "https://www.linkedin.com/in/nithin-erroju-849879255/",
     "github": "https://github.com/Tech-Nithin",
     "twitter": "",
     "leetcode": "",
-    "linkedin": "https://www.linkedin.com/in/nithin-erroju-849879255/",
-    "portfolio": "https://nithin-s-portfolio.vercel.app/",
-    "hackerrank": ""
+    "hackerrank": "",
+    "portfolio": ""
   },
   "summary": "Software Engineer with 1+ year of hands-on experience in designing and developing scalable, high-performance web applications using modern technologies including React, Node.js, JavaScript, and Java. Proficient in building full-stack solutions with cloud-based backends such as Supabase and Neon, and experienced in deploying production-ready applications using GitHub and Vercel with seamless API integrations.",
   "targetRole": "",
@@ -50,31 +50,55 @@
   ],
   "experiences": [
     {
-      "id": "1",
-      "title": "Software Developer",
+      "role": "Software Developer",
       "company": "ApplyWizz | IT Towers",
       "period": "Jun 2025 - Present",
-      "bullets": "• Developed scalable full-stack web applications using React, Node.js, JavaScript, and Java technologies.\n• Built a Company Expense Tracker with AI image recognition automating receipt data extraction.\n• Designed and developed “Ready to Collab” platform enabling seamless influencer and brand collaboration.\n• Delivered 50+ responsive portfolio websites focusing with optimised UI/UX and performance.\n• Integrated RESTful APIs and third-party services ensuring secure, efficient, scalable data handling systems.\n• Utilized Supabase and Neon PostgreSQL for backend services with optimized database structures efficiently.\n• Managed version control and deployments using GitHub and Vercel establishing smooth CI/CD workflows.\n• Collaborated across development lifecycle, delivering production-ready solutions."
+      "desc": "Developed scalable full-stack web applications using React, Node.js, JavaScript, and Java technologies. Built a Company Expense Tracker with AI image recognition automating receipt data extraction. Designed and developed 'Ready to Collab' platform enabling seamless influencer and brand collaboration. Delivered over 50 responsive portfolio websites with optimized UI/UX and performance. Integrated RESTful APIs and third-party services ensuring secure, efficient, scalable data handling systems. Utilized Supabase and Neon PostgreSQL for backend services with optimized database structures efficiently. Managed version control and deployments using GitHub and Vercel establishing smooth CI/CD workflows. Collaborated across the development lifecycle, delivering production-ready solutions."
     }
   ],
   "educations": [
     {
-      "id": "1",
       "degree": "Master of Computer Applications",
       "institution": "Osmania University, SF",
       "year": "Oct 2023 - Sep 2025",
       "grade": "CGPA – 7.89"
     },
     {
-      "id": "2",
       "degree": "Bachelor Of Computer Science",
       "institution": "Prathibha Degree College",
       "year": "Aug 2020 - July 2023",
       "grade": "CGPA – 8.85"
     }
   ],
-  "projects": "Company Expense Tracker Tool\nDeveloped a role-based Company Expense Tracker with separate dashboards for efficient expense management. Built using React and Node.js with Supabase for database, authentication, and secure storage. Implemented Supabase Storage to manage receipt uploads and integrated AI chat for expense insights. Designed dynamic dashboards and optimized large-scale data fetching using Redis caching. Leveraged CDN and scalable architecture for low-latency, high-performance, real-time expense tracking.\nTech: React, Node.js, Supabase, Redis\n\nBig Career Dream\nDeveloped a large-scale job platform aggregating U.S. job listings by scraping multiple job portals. Processed and fetched lakhs of records efficiently using optimized queries and high-performance database handling. Handled massive API traffic by distributing requests across servers for scalability and reliability. Supported high concurrent users with robust architecture ensuring seamless performance under heavy loads. Integrated AI for resume parsing and an intelligent chatbot for enhanced user interaction and insights.\nTech: \n\nReady To Collab\nDeveloped “Ready to Collab,” a full-stack platform enabling brand – influencer discovery, matching, and campaign management. Built using React, Node.js, and REST APIs with scalable backend architecture and optimized database queries. Implemented real-time communication, email integrations, and content-sharing workflows for seamless collaboration.\nTech: React, Node.js, REST APIs",
-  "certifications": "",
-  "custom": [],
-  "stats": []
+  "projects": [
+    {
+      "title": "Company Expense Tracker Tool",
+      "description": "Developed a role-based Company Expense Tracker with separate dashboards for efficient expense management. Built using React and Node.js with Supabase for database, authentication, and secure storage. Implemented Supabase Storage to manage receipt uploads and integrated AI chat for expense insights. Designed dynamic dashboards and optimized large-scale data fetching using Redis caching. Leveraged CDN and scalable architecture for low-latency, high-performance, real-time expense tracking.",
+      "techStack": [
+        "React",
+        "Node.js",
+        "Supabase",
+        "Redis"
+      ],
+      "link": ""
+    },
+    {
+      "title": "Big Career Dream",
+      "description": "Developed a large-scale job platform aggregating U.S. job listings by scraping multiple job portals. Processed and fetched lakhs of records efficiently using optimized queries and high-performance database handling. Handled massive API traffic by distributing requests across servers for scalability and reliability. Supported high concurrent users with robust architecture ensuring seamless performance under heavy loads. Integrated AI for resume parsing and an intelligent chatbot for enhanced user interaction and insights.",
+      "techStack": [],
+      "link": ""
+    },
+    {
+      "title": "Ready To Collab",
+      "description": "Developed 'Ready to Collab,' a full-stack platform enabling brand – influencer discovery, matching, and campaign management. Built using React, Node.js, and REST APIs with scalable backend architecture and optimized database queries. Implemented real-time communication, email integrations, and content-sharing workflows for seamless collaboration.",
+      "techStack": [
+        "React",
+        "Node.js",
+        "REST APIs"
+      ],
+      "link": ""
+    }
+  ],
+  "certifications": [],
+  "custom": []
 }

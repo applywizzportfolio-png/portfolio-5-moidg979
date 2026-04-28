@@ -76,7 +76,7 @@ const AwwardsBadge = () => {
         right: -100,
       }}
     >
-      <a href="https://www.awwwards.com/sites/mohit-virlis-portfolio" target="_blank">
+      <a href={data?.personal?.portfolio || data?.personal?.github || "#"} target="_blank" style={{ pointerEvents: 'auto' }}>
         <svg width="53.08" height="171.358">
           <path className="js-color-bg" fill="white" d="M0 0h53.08v171.358H0z"></path>
           <g className="js-color-text" fill={color} ref={fillRef}>

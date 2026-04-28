@@ -7,6 +7,8 @@ import * as THREE from "three";
 import { FOOTER_LINKS } from "../../constants";
 import { FooterLink } from "../../types";
 
+import { usePortfolioData } from "../../../hooks/usePortfolioData";
+
 const FooterLinkItem = ({ link }: { link: FooterLink }) => {
   const textRef = useRef<THREE.Group>(null);
   const [hovered, setHovered] = useState(false);
@@ -85,6 +87,7 @@ const FooterLinkItem = ({ link }: { link: FooterLink }) => {
 }
 
 const Footer = () => {
+  const { data: portfolioData } = usePortfolioData();
   const groupRef = useRef<THREE.Group>(null);
   const data = useScroll();
 
@@ -96,7 +99,19 @@ const Footer = () => {
   });
 
   const getLinks = () => {
-    return FOOTER_LINKS.map((link, i) => {
+    const links: FooterLink[] = [];
+    
+    if (portfolioData?.personal) {
+      if (portfolioData.personal.linkedin) links.push({ name: 'linkedin', url: portfolioData.personal.linkedin, icon: 'icons/linkedin.svg' });
+      if (portfolioData.personal.github) links.push({ name: 'github', url: portfolioData.personal.github, icon: 'icons/github.svg' });
+      if (portfolioData.personal.email) links.push({ name: 'email', url: `mailto:${portfolioData.personal.email}`, icon: 'icons/email.svg' });
+      if (portfolioData.personal.portfolio) links.push({ name: 'website', url: portfolioData.personal.portfolio, icon: 'icons/globe.svg' });
+    }
+
+    // Fallback to template links if no social links found
+    const displayLinks = links.length > 0 ? links : FOOTER_LINKS;
+
+    return displayLinks.map((link, i) => {
       return (
         <group key={i} position={[i * (isMobile ? 1.1 : 2), 0, 0]}>
           <FooterLinkItem link={link}/>

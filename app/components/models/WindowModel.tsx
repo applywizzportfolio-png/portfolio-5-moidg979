@@ -29,15 +29,15 @@ type GLTFResult = GLTF & {
   }
 }
 const WindowModel = (props: Partial<THREE.Object3D>) => {
-  const { data } = usePortfolioData();
+  const { data: portfolioData } = usePortfolioData();
   const handleRef = useRef<THREE.Mesh>(null);
   const windowRef = useRef<THREE.Mesh>(null);
 
   const { nodes, materials } = useGLTF('models/window.glb', true ) as GLTFResult
-  const data = useScroll();
+  const scroll = useScroll();
   useFrame(() => {
-    const b = data.range(0.4, 0.1);
-    const c = data.range(0.5, 0.1);
+    const b = scroll.range(0.4, 0.1);
+    const c = scroll.range(0.5, 0.1);
 
     if (handleRef.current) {
       handleRef.current.rotation.y = -0.5 * Math.PI * b;

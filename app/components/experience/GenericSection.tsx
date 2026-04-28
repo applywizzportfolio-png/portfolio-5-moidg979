@@ -1,15 +1,14 @@
+"use client";
 import { ScrollControls } from "@react-three/drei";
 import { usePortalStore, useScrollStore } from "@stores";
 import { useEffect, useMemo, useRef } from "react";
+import { usePortfolioData } from "../../../hooks/usePortfolioData";
 import * as THREE from "three";
-import { Memory } from "../../models/Memory";
-import Timeline from "./Timeline";
+import { Memory } from "../models/Memory";
+import Timeline from "./work/Timeline";
 
-import { usePortfolioData } from "../../../../hooks/usePortfolioData";
-
-const Work = () => {
-  const { data: portfolioData } = usePortfolioData();
-  const isActive = usePortalStore((state) => state.activePortalId === 'work');
+const GenericSection = ({ section }: { section: any }) => {
+  const isActive = usePortalStore((state) => state.activePortalId === section.id);
   const { scrollProgress, setScrollProgress } = useScrollStore();
 
   const handleScroll = (event: Event) => {
@@ -20,53 +19,13 @@ const Work = () => {
     setScrollProgress(progress);
   }
 
-  // Hack: If the portal is active, add the scroll event listener to the scroll
-  // wrapper div. If the portal is not active, remove the scroll event listener.
-  // ScrollControls doesn't work out of the box, so we have to manually handle
-  // the scroll event.
-
-
-  // Map work and education to the timeline format
-  const timelinePoints = useMemo(() => {
-    const points: any[] = [];
-    
-    // Add experiences
-    if (portfolioData?.experiences) {
-      portfolioData.experiences.forEach((exp: any, i: number) => {
-        points.push({
-          title: exp.role,
-          subtitle: exp.company,
-          year: exp.duration || exp.date,
-          point: new THREE.Vector3(0, 0, points.length * -5),
-          position: points.length % 2 === 0 ? 'left' : 'right'
-        });
-      });
-    }
-
-    // Add educations
-    if (portfolioData?.educations) {
-      portfolioData.educations.forEach((edu: any) => {
-        points.push({
-          title: edu.degree,
-          subtitle: edu.school,
-          year: edu.duration || edu.date,
-          point: new THREE.Vector3(0, 0, points.length * -5),
-          position: points.length % 2 === 0 ? 'left' : 'right'
-        });
-      });
-    }
-
-    return points;
-  }, [portfolioData]);
-
   const wasActive = useRef(false);
 
   useEffect(() => {
     if (isActive) {
       wasActive.current = true;
-      // Target the local scroll wrapper (the one with z-index: -1 initially)
       const scrollWrappers = document.querySelectorAll('div[style*="z-index: -1"]');
-      const scrollWrapper = Array.from(scrollWrappers).find(el => el.contains(document.querySelector('.timeline-container'))) as HTMLElement;
+      const scrollWrapper = Array.from(scrollWrappers).find(el => el.contains(document.querySelector(`.timeline-container-${section.id}`))) as HTMLElement;
       const originalScrollWrapper = document.querySelector('div[style*="z-index: 1"]') as HTMLElement;
       
       setScrollProgress(0);
@@ -78,7 +37,7 @@ const Work = () => {
     } else if (wasActive.current) {
       wasActive.current = false;
       const scrollWrappers = document.querySelectorAll('div[style*="z-index: 1"]');
-      const scrollWrapper = Array.from(scrollWrappers).find(el => el.contains(document.querySelector('.timeline-container'))) as HTMLElement;
+      const scrollWrapper = Array.from(scrollWrappers).find(el => el.contains(document.querySelector(`.timeline-container-${section.id}`))) as HTMLElement;
       const originalScrollWrapper = document.querySelector('div[style*="z-index: -1"]') as HTMLElement;
 
       if (scrollWrapper) {
@@ -91,8 +50,21 @@ const Work = () => {
     }
   }, [isActive]);
 
+  // Map custom section items to the Timeline format
+  // section.items: [{ title, subtitle, description, date }]
+  const timelinePoints = useMemo(() => {
+    if (!section.items) return [];
+    return section.items.map((item: any, i: number) => ({
+      title: item.title,
+      subtitle: item.subtitle || item.description?.substring(0, 50) + "...",
+      year: item.date || "",
+      point: new THREE.Vector3(0, 0, i * -5), // Space them out on Z axis
+      position: i % 2 === 0 ? 'left' : 'right'
+    }));
+  }, [section]);
+
   return (
-    <group className="timeline-container">
+    <group className={`timeline-container-${section.id}`}>
       <mesh receiveShadow>
         <planeGeometry args={[4, 4, 1]} />
         <shadowMaterial opacity={0.1} />
@@ -101,12 +73,12 @@ const Work = () => {
         <Memory scale={new THREE.Vector3(5, 5, 5)} position={new THREE.Vector3(0, -6, 1)}/>
         <Timeline 
           progress={isActive ? scrollProgress : 0} 
-          points={timelinePoints.length > 0 ? timelinePoints : undefined}
-          activeId="work"
+          points={timelinePoints as any} 
+          activeId={section.id} 
         />
       </ScrollControls>
     </group>
   );
 };
 
-export default Work;
+export default GenericSection;

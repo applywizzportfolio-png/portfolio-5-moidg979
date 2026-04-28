@@ -1,5 +1,5 @@
-"use client";
-import { usePortfolioData } from "../hooks/usePortfolioData";
+
+
 import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata, Viewport } from "next";
 import localFont from 'next/font/local';
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Mohit Virli - Frontend Engineer",
     description: "Frontend engineer by profession, creative at heart.",
-    url: `https://${data?.personal?.name || '{data?.personal?.name || 'mohitvirli.github.io'}'}`,
+    url: "https://mohitvirli.github.io",
     siteName: "Mohit Virli's Portfolio",
     locale: "en_US",
     type: "website",

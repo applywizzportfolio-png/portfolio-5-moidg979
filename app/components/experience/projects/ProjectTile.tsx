@@ -124,7 +124,7 @@ const ProjectTile = ({ project, index, position, rotation, activeId, onClick }: 
             {...subtitleProps}
             position={[-0.7, 0.2, 0]}
             fontSize={0.3}>
-            {project.date.toUpperCase()}
+            {(project.date || "").toUpperCase()}
           </Text>
         </group>
         <Text

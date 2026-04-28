@@ -64,10 +64,10 @@ const TimelinePoint = ({ point, diff }: { point: WorkTimelinePoint, diff: number
   );
 };
 
-const Timeline = ({ progress }: { progress: number }) => {
+const Timeline = ({ progress, points, activeId = 'work' }: { progress: number, points?: WorkTimelinePoint[], activeId?: string }) => {
   const { camera } = useThree();
-  const isActive = usePortalStore((state) => state.activePortalId === 'work');
-  const timeline = useMemo(() => WORK_TIMELINE, []);
+  const isActive = usePortalStore((state) => state.activePortalId === activeId);
+  const timeline = useMemo(() => points || WORK_TIMELINE, [points]);
 
   const curve = useMemo(() => new THREE.CatmullRomCurve3(timeline.map(p => p.point), false), [timeline]);
   const curvePoints = useMemo(() => curve.getPoints(500), [curve]);

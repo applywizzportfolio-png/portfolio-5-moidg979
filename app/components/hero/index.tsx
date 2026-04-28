@@ -11,7 +11,10 @@ import StarsContainer from "../models/Stars";
 import WindowModel from "../models/WindowModel";
 import TextWindow from "./TextWindow";
 
+import { usePortfolioData } from "../../../hooks/usePortfolioData";
+
 const Hero = () => {
+  const { data } = usePortfolioData();
   const titleRef = useRef<THREE.Mesh>(null);
   const { progress } = useProgress();
 
@@ -35,7 +38,9 @@ const Hero = () => {
 
   return (
     <>
-      <Text position={[0, 2, -10]} {...fontProps} ref={titleRef}>Hi, I am Mohit Virli.</Text>
+      <Text position={[0, 2, -10]} {...fontProps} ref={titleRef}>
+        Hi, I am {data?.personal?.name || "Mohit Virli"}.
+      </Text>
       <StarsContainer />
       <CloudContainer/>
       <group position={[0, -25, 5.69]}>
